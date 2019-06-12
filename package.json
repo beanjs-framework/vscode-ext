@@ -1,0 +1,70 @@
+{
+	"name": "beanjs-vscode-ext",
+	"displayName": "beanjs-vscode-ext",
+	"description": "beanjs terminal plugin",
+	"version": "1.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.beanjsConnect",
+				"title": "beanjs : Connect"
+			},
+			{
+				"command": "extension.beanjsDownNormal",
+				"title": "beanjs : DownNormal",
+				"enablement": "resourceExtname == .js"
+			},
+			{
+				"command": "extension.beanjsDownMinify",
+				"title": "beanjs : DownMinify",
+				"enablement": "resourceExtname == .js"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "extension.beanjsConnect",
+					"alt": "extension.beanjsConnect",
+					"group": "beanjs_group"
+				},
+				{
+					"command": "extension.beanjsDownNormal",
+					"alt": "extension.beanjsDownNormal",
+					"group": "beanjs_group",
+					"when": "resourceExtname == .js"
+				},
+				{
+					"command": "extension.beanjsDownMinify",
+					"alt": "extension.beanjsDownMinify",
+					"group": "beanjs_group",
+					"when": "resourceExtname == .js"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.21",
+		"eslint": "^5.13.0",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"@babel/core": "^7.4.5",
+		"babel-preset-minify": "^0.5.0"
+	}
+}
